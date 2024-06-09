@@ -13,6 +13,16 @@ class Board:
         
         self.font: pygame.font.Font = pygame.font.SysFont(FONT, FONT_SIZE, True)
 
+    def update(self) -> None:
+        pass
+
     def render(self) -> None:
-        text = self.font.render("Hello World!", True, (255, 255, 255))
-        self.game.display.blit(text, (0, 0))
+        x: float = (self.game.display.get_width() / self.size) / 2
+        y: float = (self.game.display.get_height() / self.size) / 2
+        for row in self.rows:
+            for cel in row:
+                text: pygame.surface.Surface = self.font.render(str(cel), True, (255, 255, 255))
+                self.game.display.blit(text, (x, y))
+                x += self.game.display.get_width() / self.size
+            x = (self.game.display.get_width() / self.size) / 2
+            y += self.game.display.get_height() / self.size
