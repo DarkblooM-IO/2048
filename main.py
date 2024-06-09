@@ -2,7 +2,6 @@ import sys
 import pygame
 
 from scripts.board import Board
-# from scripts.utils import rotate90
 
 SCREEN_WIDTH: int = 500
 SCREEN_HEIGHT: int = 500
@@ -10,7 +9,7 @@ SCREEN_SIZE: tuple[int] = (SCREEN_WIDTH, SCREEN_HEIGHT)
 FPS_MAX: int = 60
 WINDOW_TITLE: str = "2048"
 
-BG_CLR: tuple[int] = (46, 52, 64)
+BG_CLR: tuple[int] = (46, 52, 64) # nordify your stuff B)
 
 BOARD_SIZE: int = 4
 
@@ -33,13 +32,15 @@ class Game:
                 match event.type:
                     case pygame.KEYDOWN:
                         match event.key:
-                            # case pygame.K_RETURN: self.board.board = rotate90(self.board.board, self.board.size)
+                            case pygame.K_LEFT: self.board.update(1)
+                            case pygame.K_DOWN: self.board.update(2)
+                            case pygame.K_RIGHT: self.board.update(3)
+                            case pygame.K_UP: self.board.update(4)
                             case pygame.K_ESCAPE: self.running = False
                     case pygame.QUIT: self.running = False
 
             self.display.fill(BG_CLR)
 
-            self.board.update()
             self.board.render()
 
             self.screen.blit(self.display, (0, 0))
