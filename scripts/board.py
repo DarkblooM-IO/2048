@@ -17,8 +17,8 @@ class Board:
         pass
 
     def render(self) -> None:
-        x: float = (self.game.display.get_width() / self.size) / 2
-        y: float = (self.game.display.get_height() / self.size) / 2
+        x: float = (self.game.display.get_width() / self.size) / 1.5
+        y: float = (self.game.display.get_height() / self.size) / 1.5
         for row in self.rows:
             for cel in row:
                 text: pygame.surface.Surface = self.font.render(str(cel), True, (255, 255, 255))
