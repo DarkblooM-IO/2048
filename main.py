@@ -2,6 +2,7 @@ import sys
 import pygame
 
 from scripts.board import Board
+# from scripts.utils import rotate90
 
 SCREEN_WIDTH: int = 500
 SCREEN_HEIGHT: int = 500
@@ -32,11 +33,13 @@ class Game:
                 match event.type:
                     case pygame.KEYDOWN:
                         match event.key:
+                            # case pygame.K_RETURN: self.board.board = rotate90(self.board.board, self.board.size)
                             case pygame.K_ESCAPE: self.running = False
                     case pygame.QUIT: self.running = False
 
             self.display.fill(BG_CLR)
 
+            self.board.update()
             self.board.render()
 
             self.screen.blit(self.display, (0, 0))
